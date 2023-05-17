@@ -74,6 +74,8 @@ defmodule WordexWeb.Router do
   scope "/", WordexWeb do
     pipe_through [:browser]
 
+    live "/example", ExampleLive
+
     delete "/users/log_out", UserSessionController, :delete
 
     live_session :current_user,
