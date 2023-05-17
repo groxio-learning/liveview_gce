@@ -87,7 +87,6 @@ defmodule WordexWeb.ExampleLive do
           <div></div>
 
           <div></div>
-          <div class="bg-gray-500 text-white pt-1 pb-1 rounded">D</div>
           <div class="text-black border-solid border-2 border-slate-600 pt-1 pb-1 rounded">Z</div>
           <div class="text-black border-solid border-2 border-slate-600 pt-1 pb-1 rounded">X</div>
           <div class="text-black border-solid border-2 border-slate-600 pt-1 pb-1 rounded">C</div>
