@@ -3,26 +3,7 @@ defmodule WordexWeb.GameLive do
   alias Wordex.Game
 
   def mount(_params, _session, socket) do
-    {:ok, in_progress_game(socket)}
-  end
-
-  def render(assigns) do
-    ~H"""
-    hello, world
-
-    <pre>
-      <%= inspect @game, pretty: true %>
-    </pre>
-    <br/>
-    <br/>
-    <hr/>
-    <br/>
-    <br/>
-    <pre>
-      <%= inspect @result, pretty: true %>
-    </pre>
-
-    """
+    {:ok, socket |> in_progress_game()}
   end
 
   defp in_progress_game(socket) do
@@ -34,6 +15,48 @@ defmodule WordexWeb.GameLive do
     result = Game.render(game)
 
     assign(socket, game: game, result: result)
+  end
+
+  def render(assigns) do
+    ~H"""
+    <.word_grid scores={@game.scores}/>
+
+    <pre>
+    <%= inspect @game, pretty: true %>
+    </pre>
+    """
+  end
+
+  attr :scores, :list
+  def word_grid(assigns) do
+    ~H"""
+    <%= for index <- 0..5 do %>
+      <.word score={@scores |> Enum.at(index)}/>
+    <% end %>
+    """
+  end
+
+  attr :score, :list
+  def word(%{score: nil} = assigns) do
+    ~H"""
+    <div class="grid grid-cols-5 gap-4 text-center font-bold">
+      <.word_letter letter="" color=""/>
+      <.word_letter letter="" color=""/>
+      <.word_letter letter="" color=""/>
+      <.word_letter letter="" color=""/>
+      <.word_letter letter="" color=""/>
+    </div>
+    """
+  end
+
+  def word(assigns) do
+    ~H"""
+    <div class="grid grid-cols-5 gap-4 text-center font-bold">
+      <%= for {letter, color} <- @score do %>
+        <.word_letter letter={letter} color={color}/>
+      <% end %>
+    </div>
+    """
   end
 
   attr :letter, :string
