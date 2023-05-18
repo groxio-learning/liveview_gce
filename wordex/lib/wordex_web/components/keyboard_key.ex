@@ -1,14 +1,18 @@
 defmodule WordexWeb.KeyboardKey do
-
   use Phoenix.Component
 
   attr :letter, :string
   attr :color, :atom
+
   def key(assigns) do
     ~H"""
-      <div phx-click="add_letter" class={["pt-1 pb-1 rounded uppercase", classes(@color)]}>
-        <%= @letter %>
-      </div>
+    <div
+      phx-click="add_letter"
+      phx-value-letter={@letter}
+      class={["pt-1 pb-1 rounded uppercase", classes(@color)]}
+    >
+      <%= @letter %>
+    </div>
     """
   end
 
