@@ -60,7 +60,7 @@ defmodule WordexWeb.GameLive do
     ~H"""
     <div class="grid grid-cols-5 gap-4 text-center font-bold">
       <%= for {letter, color} <- @score do %>
-        <.word_letter letter={letter} color={color}/>
+        <.word_letter letter={String.upcase(letter)} color={color}/>
       <% end %>
     </div>
     """
