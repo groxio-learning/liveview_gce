@@ -21,11 +21,7 @@ defmodule WordexWeb.GameLive do
   def render(assigns) do
     ~H"""
     <.word_grid scores={@game.scores}/>
-    <.keyboard />
-    <pre>
-    <%= inspect @game, pretty: true %>
-    </pre>
-    
+
     <div class="grid grid-cols-10 gap-3 text-center font-bold">
       <%= for {letter, color} <- @result.keyboard do %>
         <KeyboardKey.key letter={letter} color={color} />
@@ -52,6 +48,8 @@ defmodule WordexWeb.GameLive do
       <.word_letter letter="" color=""/>
       <.word_letter letter="" color=""/>
       <.word_letter letter="" color=""/>
+    </div>
+    """
   end
 
   def word(assigns) do
