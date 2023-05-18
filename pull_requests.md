@@ -3,3 +3,4 @@
 - Bruce Tate
 - Howard Bussey
 - Eric Fleming
+- Flora Petterson
