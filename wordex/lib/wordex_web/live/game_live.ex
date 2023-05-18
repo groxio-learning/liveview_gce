@@ -98,11 +98,7 @@ defmodule WordexWeb.GameLive do
 
       <pre><%= inspect(@changeset, pretty: true) %></pre>
 
-      <div class="grid grid-cols-10 gap-3 text-center font-bold">
-        <%= for {letter, color} <- @result.keyboard do %>
-          <KeyboardKey.key letter={letter} color={color} />
-        <% end %>
-      </div>
+      <.keyboard keyboard_state={@result.keyboard} />
     </div>
     """
   end
@@ -165,41 +161,28 @@ defmodule WordexWeb.GameLive do
   defp bg_color(:gray), do: "bg-gray-500"
   defp bg_color(_), do: ""
 
+  attr :keyboard_state, :map
   defp keyboard(assigns) do
     ~H"""
     <div class="grid grid-cols-10 gap-3 text-center font-bold">
       <%= for i <- keyboard_rows() do %>
-        <.keyboard_row letters={i} />
+        <.keyboard_row letters={i} keyboard_state={@keyboard_state} />
       <% end %>
     </div>
     """
   end
 
   attr :letters, :list
-
+  attr :keyboard_state, :map
   defp keyboard_row(assigns) do
     ~H"""
     <%= for i <- @letters do %>
       <%= if i == "-" do %>
         <div />
       <% else %>
-        <.keyboard_letter letter={i} />
+        <KeyboardKey.key letter={i} color={@keyboard_state[i]} />
       <% end %>
     <% end %>
-    """
-  end
-
-  attr :letter, :string
-
-  defp keyboard_letter(assigns) do
-    ~H"""
-    <button
-      class="bg-green-600 text-white pt-2 pb-2 rounded"
-      phx-click="guess"
-      phx-value-letter={@letter}
-    >
-      <%= @letter %>
-    </button>
     """
   end
 
