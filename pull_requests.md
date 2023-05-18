@@ -6,4 +6,4 @@
 - Eric Fleming
 - Logan Siefker
 - Flora Petterson
-- Logan Siefker
+
