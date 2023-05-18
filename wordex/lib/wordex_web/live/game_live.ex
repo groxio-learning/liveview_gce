@@ -59,14 +59,15 @@ defmodule WordexWeb.GameLive do
     """
   end
 
-  @doc """
-  NOT MY PROBLEM!
-  """
   attr :letter, :string
   attr :color, :atom
   def word_letter(assigns) do
     ~H"""
-    <div class="border h-8 pt-2 pb-2 rounded"><%= @letter %> <%= @color %></div>
+    <div class={"#{bg_color(@color)} text-white pt-2 pb-2 rounded"}><%= @letter %></div>
     """
   end
+
+  defp bg_color(:green), do: "bg-green-600"
+  defp bg_color(:yellow), do: "bg-yellow-500"
+  defp bg_color(:gray), do: "bg-gray-500"
 end

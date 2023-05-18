@@ -1,4 +1,4 @@
-# Gig City Elixir LiveView Components Jan 2023
+# Gig City Elixir LiveView Components May 2023
 Groxio LiveView Components Course
 
 ## 1 Install these tools, plus Elixir, plus Phoenix. 

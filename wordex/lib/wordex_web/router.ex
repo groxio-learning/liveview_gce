@@ -75,6 +75,7 @@ defmodule WordexWeb.Router do
     pipe_through [:browser]
 
     live "/example", ExampleLive
+    live "/play", GameLive
     live "/counter/integer/:count", CountLive
 
     delete "/users/log_out", UserSessionController, :delete
