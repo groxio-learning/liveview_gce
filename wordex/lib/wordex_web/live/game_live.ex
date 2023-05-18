@@ -149,9 +149,16 @@ defmodule WordexWeb.GameLive do
 
   def word_letter(assigns) do
     ~H"""
-    <div class={"#{bg_color(@color)} text-white pt-2 pb-2 mb-4 rounded"}><%= @letter %></div>
+    <div class={"#{bg_styling(@color, @letter)}"}><%= @letter %></div>
     """
   end
+
+  defp bg_styling(:green, _), do: "bg-green-600 text-white pt-2 pb-2 rounded"
+  defp bg_styling(:yellow, _), do: "bg-yellow-500 text-white pt-2 pb-2 rounded"
+  defp bg_styling(:gray, _), do: "bg-gray-500 text-white pt-2 pb-2 rounded"
+  defp bg_styling(:white, ""), do: "bg-white-500 border text-black pt-2 pb-2 rounded"
+  defp bg_styling(:white, nil), do: "bg-white-500 border text-black pt-2 pb-2 rounded"
+  defp bg_styling(:white, _), do: "bg-white-500 border-black border-2 text-black pt-2 pb-2 rounded"
 
   defp bg_color(:green), do: "bg-green-600"
   defp bg_color(:yellow), do: "bg-yellow-500"
