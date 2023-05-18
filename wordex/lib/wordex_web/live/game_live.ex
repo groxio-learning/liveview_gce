@@ -3,6 +3,10 @@ defmodule WordexWeb.GameLive do
   alias Wordex.Game
   alias WordexWeb.KeyboardKey
 
+  def mount(_params, _session, socket) do
+    {:ok, in_progress_game(socket)}
+  end
+
   defp in_progress_game(socket) do
     game =
       Game.new()
