@@ -1,6 +1,7 @@
 defmodule WordexWeb.GameLive do
   use WordexWeb, :live_view
   alias Wordex.Game
+  alias WordexWeb.KeyboardKey
 
   def mount(_params, _session, socket) do
     {:ok, in_progress_game(socket)}
@@ -21,6 +22,12 @@ defmodule WordexWeb.GameLive do
     <pre>
       <%= inspect @result, pretty: true %>
     </pre>
+
+    <div class="grid grid-cols-10 gap-3 text-center font-bold">
+      <%= for {letter, color} <- @result.keyboard do %>
+        <KeyboardKey.key letter={letter} color={color} />
+      <% end %>
+    </div>
 
     """
   end
