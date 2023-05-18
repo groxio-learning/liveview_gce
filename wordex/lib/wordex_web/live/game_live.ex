@@ -21,7 +21,7 @@ defmodule WordexWeb.GameLive do
   def render(assigns) do
     ~H"""
     <.word_grid scores={@game.scores}/>
-
+    <.keyboard />
     <pre>
     <%= inspect @game, pretty: true %>
     </pre>
@@ -81,4 +81,47 @@ defmodule WordexWeb.GameLive do
   defp bg_color(:yellow), do: "bg-yellow-500"
   defp bg_color(:gray), do: "bg-gray-500"
   defp bg_color(_), do: ""
+
+  defp keyboard(assigns) do
+    ~H"""
+      <div class="grid grid-cols-10 gap-3 text-center font-bold">
+        <%= for i <- keyboard_rows() do %>
+          <.keyboard_row letters={i} />
+        <% end %>
+      </div>
+    """
+  end
+
+  attr :letters, :list
+  defp keyboard_row(assigns) do
+    ~H"""
+      <%= for i <- @letters do %>
+        <%= if i == "-" do %>
+          <div/>
+        <% else %>
+          <.keyboard_letter letter={i} />
+        <% end %>
+      <% end %>
+    """
+  end
+
+  attr :letter, :string
+  defp keyboard_letter(assigns) do
+    ~H"""
+      <button
+        class="bg-green-600 text-white pt-2 pb-2 rounded"
+        phx-click="guess"
+        phx-value-letter={@letter}>
+        <%= @letter %>
+      </button>
+    """
+  end
+
+  defp keyboard_rows() do
+    [
+      ~w(q w e r t y u i o p),
+      ~w(a s d f g h j k l -),
+      ~w(- z x c v b n m - -)
+    ]
+  end
 end
