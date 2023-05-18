@@ -20,6 +20,7 @@ defmodule WordexWeb.GameLive do
 
   def render(assigns) do
     ~H"""
+    <h1>Wordex With Buttons</h1>
     <.word_grid scores={@game.scores}/>
 
     <div class="grid grid-cols-10 gap-3 text-center font-bold">
