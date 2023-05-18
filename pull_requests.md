@@ -4,3 +4,4 @@
 - Howard Bussey
 - Eric Fleming
 - Logan Siefker
+- Flora Petterson
