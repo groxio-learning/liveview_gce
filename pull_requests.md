@@ -1,5 +1,9 @@
 - Sigu Magwa
-- Your Name
+- Ken Barker
+- Ryan Gaffney
 - Bruce Tate
 - Howard Bussey
 - Eric Fleming
+- Logan Siefker
+- Flora Petterson
+

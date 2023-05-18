@@ -8,5 +8,4 @@ defmodule WordexWeb.ExampleLive do
   def handle_event("click", _metadata, socket) do
     {:noreply, socket}
   end
-
 end
